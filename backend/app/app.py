@@ -1,19 +1,21 @@
+import os
 from sanic import Sanic, response
 from sanic.response import json
 from sanic_cors import CORS
-import os
 from controllers.user_controller import UserController
 from controllers.task_controller import TaskController
 from tortoise import Tortoise
 from services.task_service import TaskService
 from services.user_service import UserService
 from services.llm_service import LLMService
-from connections.chatgpt import ChatGPTConnection
+from connections.mistral import MistralConnection  # Updated import to use Mistral
 from middleware.auth import auth_middleware
-
 from config import Config
 
 app = Sanic("AI-TODO-API")
+
+
+os.environ["SANIC_ENV"] = "development"
 
 # CORS configuration
 CORS_URL = Config.CORS_ORIGIN
@@ -36,8 +38,13 @@ async def setup_services(app, loop):
     )
     await Tortoise.generate_schemas()  # Generate schemas in the database
 
-    chatgpt_connection = ChatGPTConnection(Config.OPENAI_SECRET)
-    llm_service = LLMService(chatgpt_connection)
+    # Initialize Mistral Connection for LLM services
+    mistral_connection = MistralConnection(
+        api_key=Config.MISTRAL_API_KEY
+    )  # Using Mistral API Key
+
+    # Initialize LLM service
+    llm_service = LLMService(mistral_connection)
 
     # Initialize service instances
     user_service = UserService()

@@ -27,5 +27,9 @@ class Config:
 
     OPENAI_SECRET = os.getenv("OPENAI_SECRET", "Set this up at ")
 
+    MISTRAL_API_KEY = os.getenv(
+        "MISTRAL_API_KEY", "https://console.mistral.ai/api-keys/"
+    )
+
 
 # Vous pouvez ajouter d'autres paramètres globaux ici comme les queues Azure, etc.

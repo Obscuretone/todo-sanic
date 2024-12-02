@@ -14,7 +14,7 @@ class UserController:
 
         # Add the routes to the app instance
         self.app.add_route(self.create_user, "/auth/register", methods=["POST"])
-        self.app.add_route(self.authenticate_user, "/auth", methods=["POST"])
+        self.app.add_route(self.authenticate_user, "/auth/login", methods=["POST"])
 
     async def create_user(self, request):
         data = request.json
