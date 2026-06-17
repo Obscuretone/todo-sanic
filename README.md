@@ -1,4 +1,4 @@
-# TodoApp API
+# todo-sanic API
 
 This repository contains the API for a task management application built with **Sanic**, **Sanic OpenAPI**, and **SQLite** (or other database backends as per the configuration). The API allows users to manage tasks and projects, including creating, editing, deleting tasks, as well as working with subtasks and authenticating users.
 
@@ -47,7 +47,7 @@ To run this API locally, follow the steps below:
 
 1. Clone the repository:
     ```
-    git clone https://github.com/Obscuretone/TodoApp
+    git clone https://github.com/Obscuretone/todo-sanic
     ```
 
 2. Install dependencies:
