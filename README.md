@@ -61,3 +61,8 @@ To run this API locally, follow the steps below:
     ```
 
 The app will be accessible at `http://localhost:8000` by default.
+
+## Local configuration
+
+Copy `frontend/.env.example` to `frontend/.env` and set your own Azure app and
+tenant identifiers before starting Docker Compose. Keep the local file out of Git.
